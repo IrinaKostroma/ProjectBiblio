@@ -1,0 +1,454 @@
+{
+	"info": {
+		"_postman_id": "b37f4df0-78c7-49e1-9123-910ecb355c77",
+		"name": "Project Evraz 3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "books/all_books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:80/api/books/all_books"
+			},
+			"response": []
+		},
+		{
+			"name": "books/get_by_isbn13",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoibDEiLCJuYW1lIjoibjEiLCJncm91cCI6IlVzZXIifQ.bPe9RQaO-CK9Ss1KdjKAiy4L0FTgnfjxEgDV7SBuHWE"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:80/api/books/get_by_isbn13?isbn13=9781788623322",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"books",
+						"get_by_isbn13"
+					],
+					"query": [
+						{
+							"key": "isbn13",
+							"value": "9781788623322"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books/search",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoibDEiLCJuYW1lIjoibjEiLCJncm91cCI6IlVzZXIifQ.bPe9RQaO-CK9Ss1KdjKAiy4L0FTgnfjxEgDV7SBuHWE"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:80/api/books/search?authors=Valentin Bojinov&publisher=Packt Publishing&min=&max=&key=Edition&order_by_price&order_by_size",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"books",
+						"search"
+					],
+					"query": [
+						{
+							"key": "authors",
+							"value": "Valentin Bojinov"
+						},
+						{
+							"key": "publisher",
+							"value": "Packt Publishing"
+						},
+						{
+							"key": "min",
+							"value": ""
+						},
+						{
+							"key": "max",
+							"value": ""
+						},
+						{
+							"key": "key",
+							"value": "Edition"
+						},
+						{
+							"key": "order_by_price",
+							"value": null
+						},
+						{
+							"key": "order_by_size",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books/import_books",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoibDEiLCJuYW1lIjoibjEiLCJncm91cCI6IlVzZXIifQ.bPe9RQaO-CK9Ss1KdjKAiy4L0FTgnfjxEgDV7SBuHWE"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "data",
+							"value": "net",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:80/api/books/import_books"
+			},
+			"response": []
+		},
+		{
+			"name": "books/take_book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoibDEiLCJuYW1lIjoibjEiLCJncm91cCI6IlVzZXIifQ.bPe9RQaO-CK9Ss1KdjKAiy4L0FTgnfjxEgDV7SBuHWE"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "isbn13",
+							"value": "9781119467649",
+							"type": "text"
+						},
+						{
+							"key": "user_id",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:80/api/books/take_book"
+			},
+			"response": []
+		},
+		{
+			"name": "books/return_book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoibDEiLCJuYW1lIjoibjEiLCJncm91cCI6IlVzZXIifQ.bPe9RQaO-CK9Ss1KdjKAiy4L0FTgnfjxEgDV7SBuHWE"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "isbn13",
+							"value": "9781119467649",
+							"type": "text"
+						},
+						{
+							"key": "user_id",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:80/api/books/return_book"
+			},
+			"response": []
+		},
+		{
+			"name": "books/buy_book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoibDEiLCJuYW1lIjoibjEiLCJncm91cCI6IlVzZXIifQ.bPe9RQaO-CK9Ss1KdjKAiy4L0FTgnfjxEgDV7SBuHWE"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "isbn13",
+							"value": "9781449307905",
+							"type": "text"
+						},
+						{
+							"key": "user_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:80/api/books/buy_book"
+			},
+			"response": []
+		},
+		{
+			"name": "users/registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "n2",
+							"type": "text"
+						},
+						{
+							"key": "login",
+							"value": "l2",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "p2",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:80/api/users/registration"
+			},
+			"response": []
+		},
+		{
+			"name": "users/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "login",
+							"value": "l2",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "p2",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:80/api/users/login"
+			},
+			"response": []
+		},
+		{
+			"name": "users/show_info",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoibDEiLCJuYW1lIjoibjEiLCJncm91cCI6IlVzZXIifQ.bPe9RQaO-CK9Ss1KdjKAiy4L0FTgnfjxEgDV7SBuHWE"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:80/api/users/show_info?user_id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"users",
+						"show_info"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users/all_users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoibDIiLCJuYW1lIjoibjIiLCJncm91cCI6IlVzZXIifQ.SOZQ2wRQZoxx4FHEosgr1ZIvOEC5WWPGosNz0SWrfDM"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:80/api/users/all_users"
+			},
+			"response": []
+		},
+		{
+			"name": "users/active_book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoibDIiLCJuYW1lIjoibjIiLCJncm91cCI6IlVzZXIifQ.SOZQ2wRQZoxx4FHEosgr1ZIvOEC5WWPGosNz0SWrfDM"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:80/api/users/active_book?user_id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"users",
+						"active_book"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users/taken_books",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoibDIiLCJuYW1lIjoibjIiLCJncm91cCI6IlVzZXIifQ.SOZQ2wRQZoxx4FHEosgr1ZIvOEC5WWPGosNz0SWrfDM"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:80/api/users/taken_books?user_id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"users",
+						"taken_books"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books - history",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoibDEiLCJuYW1lIjoibjEiLCJncm91cCI6IlVzZXIifQ.bPe9RQaO-CK9Ss1KdjKAiy4L0FTgnfjxEgDV7SBuHWE"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:80/api/books/history"
+			},
+			"response": []
+		},
+		{
+			"name": "users - history",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImxvZ2luIjoibDEiLCJuYW1lIjoibjEiLCJncm91cCI6IlVzZXIifQ.bPe9RQaO-CK9Ss1KdjKAiy4L0FTgnfjxEgDV7SBuHWE"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:80/api/users/history"
+			},
+			"response": []
+		},
+		{
+			"name": "top_n",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "TOP_N",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "offset",
+							"value": "0",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:80/api/books/top_n"
+			},
+			"response": []
+		}
+	]
+}

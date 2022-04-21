@@ -18,10 +18,6 @@ def create_cli(publisher, MessageBus):
     @click.argument('data', nargs=-1)
     def import_books(data):
         if publisher:
-            print("!!!In CLI - Publisher OK!")
-            print(publisher)
             publisher.plan(Message('book', {'data': data}))
-        else:
-            print("!!!In CLI - Publisher BAD!!!")
 
     return cli

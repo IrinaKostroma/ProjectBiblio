@@ -207,6 +207,8 @@ class BookService:
             email_body = '\n'.join(
                 [f'{b.isbn13}\tTitle: {b.title}\tYear: {b.year}\tRating: {b.rating}' for b in top_books])
 
+            print(email_body)
+
             if self.publisher:
                 self.publisher.plan(
                     Message('user', {'action': 'send_email',
@@ -224,8 +226,8 @@ class BookService:
     def take_book(self, isbn13: int, user_id: int) -> Book:
 
         DELTA_TIME = timedelta(minutes=1)
-        TIME_NOW = datetime.now(pytz.timezone('Europe/Moscow')).strftime("%Y-%m-%d %H:%M")
-        TIME_END = (datetime.now(pytz.timezone('Europe/Moscow')) + DELTA_TIME).strftime("%Y-%m-%d %H:%M")
+        TIME_NOW = datetime.now(pytz.timezone('Europe/Moscow')).strftime("%Y-%m-%d %H:%M:%S")
+        TIME_END = (datetime.now(pytz.timezone('Europe/Moscow')) + DELTA_TIME).strftime("%Y-%m-%d %H:%M:%S")
 
         book = self.books_repo.get_by_id(isbn13)
 
@@ -271,7 +273,7 @@ class BookService:
     @validate_arguments
     def return_book(self, isbn13: int, user_id: int) -> Book:
 
-        TIME_NOW = datetime.now(pytz.timezone('Europe/Moscow')).strftime("%Y-%m-%d %H:%M")
+        TIME_NOW = datetime.now(pytz.timezone('Europe/Moscow')).strftime("%Y-%m-%d %H:%M:%S")
 
         book = self.books_repo.get_by_id(isbn13)
 
@@ -307,7 +309,7 @@ class BookService:
     @validate_arguments
     def buy_book(self, isbn13: int, user_id: int) -> Book:
 
-        TIME_NOW = datetime.now(pytz.timezone('Europe/Moscow')).strftime("%Y-%m-%d %H:%M")
+        TIME_NOW = datetime.now(pytz.timezone('Europe/Moscow')).strftime("%Y-%m-%d %H:%M:%S")
 
         book = self.books_repo.get_by_id(isbn13)
 

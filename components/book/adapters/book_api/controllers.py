@@ -62,15 +62,12 @@ class Books:
     @authenticate
     def on_post_take_book(self, request, response):
         book = self.books.take_book(**request.media)
-        response.media = {
-            'message': f'Book is taken by user with ID {1}.'
-        }
-        # response.media = {'isbn13': book.isbn13,
-        #                   'title': book.title,
-        #                   'user_id': book.user_id,
-        #                   'end_booking': book.end_booking,
-        #                   'buy_user_id': book.buy_user_id,
-        #                   }
+        response.media = {'isbn13': book.isbn13,
+                          'title': book.title,
+                          'user_id': book.user_id,
+                          'end_booking': book.end_booking,
+                          'buy_user_id': book.buy_user_id,
+                          }
 
     @join_point
     @authenticate

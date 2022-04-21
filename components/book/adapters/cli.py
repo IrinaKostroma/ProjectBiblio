@@ -20,8 +20,6 @@ def create_cli(import_books_run, MessageBus, publisher):
 
         result = import_books_run(data)
 
-        print(result)
-
         if publisher:
             publisher.plan(
                 Message('user', {'action': 'send_email',

@@ -108,18 +108,10 @@ class UserService:
 
         elif action == 'return_book':
             # update info in history
-            print('!!! USER update info in history')
-
             book_user_info = BookUserInfo(end_booking=data['end_booking'])
-            print(data['end_booking'])
-            print(book_user_info)
-
             book_user = self.books_users_repo.get_by_id(data['id'])
-            print(data['id'])
-            print(book_user)
-
             book_user_info.populate_obj(book_user)
-            print('!!! DONE')
+            self.books_users_repo.get_by_id(data['id'])
 
         elif action == 'buy_book':
             # add info in history
@@ -138,7 +130,7 @@ class UserService:
 
     @join_point
     def active_book(self, user_id):
-        TIME_NOW = datetime.now(pytz.timezone('Europe/Moscow')).strftime("%Y-%m-%d %H:%M")
+        TIME_NOW = datetime.now(pytz.timezone('Europe/Moscow')).strftime("%Y-%m-%d %H:%M:%S")
 
         history_by_isbn = self.books_users_repo.get_by_user_id(user_id)
         if history_by_isbn:

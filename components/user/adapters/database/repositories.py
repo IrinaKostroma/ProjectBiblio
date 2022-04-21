@@ -55,6 +55,7 @@ class UsersRepo(BaseRepository, interfaces.UsersRepo):
 class BooksUsersRepo(BaseRepository, interfaces.BooksUsersRepo):
 
     def get_by_id(self, id_: int) -> Optional[BookUser]:
+        self.session.commit()
         query = select(BookUser).where(BookUser.id == id_)
         return self.session.execute(query).scalars().one_or_none()
 
@@ -74,5 +75,6 @@ class BooksUsersRepo(BaseRepository, interfaces.BooksUsersRepo):
         return book_user
 
     def get_all(self) -> Optional[BookUser]:
+        self.session.commit()
         query = select(BookUser)
         return self.session.execute(query).scalars().all()
