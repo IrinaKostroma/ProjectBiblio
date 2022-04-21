@@ -1,0 +1,5 @@
+docker exec -it biblio_book_service_1 /bin/sh
+python -m composites.cli import-books Reference Python
+
+docker exec -it biblio_user_service_1 /bin/sh
+python -m composites.cli import-books Unix Python

@@ -1,0 +1,11 @@
+setuptools~=57.0.0
+pytest~=6.2.5
+attrs~=21.2.0
+click~=7.1.2
+pydantic~=1.8.2
+SQLAlchemy~=1.4.35
+kombu~=5.1.0
+requests~=2.27.1
+dacite~=1.6.0
+pytz~=2022.1
+PyJWT~=2.0.1

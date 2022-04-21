@@ -1,0 +1,137 @@
+version: "3.8"
+
+services:
+
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=password
+    volumes:
+      - "rabbitmq_data:/data"
+
+  nginx:
+    build: ./nginx
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - book_service
+      - user_service
+
+  postgresdb:
+    build:
+      context: ./postgres
+      dockerfile: Dockerfile
+    environment:
+      - POSTGRES_PASSWORD=p_password
+    volumes:
+      - ./postgres/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    restart: on-failure
+    depends_on:
+      - rabbitmq
+
+  user_service:
+    build:
+      context: ./components/user/
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    command: gunicorn -b 0.0.0.0:8000 composites.user_api:app
+    restart: unless-stopped
+    depends_on:
+      - postgresdb
+    environment:
+      - DB_USER=postgres
+      - DB_PASSWORD=p_password
+      - DB_HOST=postgresdb
+      - DB_PORT=5432
+      - DB_DATABASE=users_database
+      - RABBIT_USER=user
+      - RABBIT_PASSWORD=password
+      - RABBIT_HOST=rabbitmq
+      - RABBIT_PORT=5672
+      - SECRET_KEY=SECRET
+    volumes:
+      - ./components/user:/app/user
+
+  user_service_consumer:
+    build:
+      context: ./components/user/
+      dockerfile: Dockerfile
+    command: python3 -m user.composites.consumer
+    depends_on:
+      - postgresdb
+      - rabbitmq
+    restart: unless-stopped
+    environment:
+      - DB_USER=postgres
+      - DB_PASSWORD=p_password
+      - DB_HOST=postgresdb
+      - DB_PORT=5432
+      - DB_DATABASE=users_database
+      - RABBIT_USER=user
+      - RABBIT_PASSWORD=password
+      - RABBIT_HOST=rabbitmq
+      - RABBIT_PORT=5672
+      - SECRET_KEY=SECRET
+    volumes:
+      - ./components/user:/app/user
+
+  book_service:
+    build:
+      context: ./components/book
+      dockerfile: Dockerfile
+    command: gunicorn -b 0.0.0.0:8001 book.composites.book_api:app
+    restart: unless-stopped
+    depends_on:
+      - postgresdb
+    ports:
+      - "8001:8001"
+    environment:
+      - DB_USER=postgres
+      - DB_PASSWORD=p_password
+      - DB_HOST=postgresdb
+      - DB_PORT=5432
+      - DB_DATABASE=books_database
+      - RABBIT_USER=user
+      - RABBIT_PASSWORD=password
+      - RABBIT_HOST=rabbitmq
+      - RABBIT_PORT=5672
+      - SECRET_KEY=SECRET
+    volumes:
+      - ./components/book:/app/book
+
+  book_service_consumer:
+    build:
+      context: ./components/book
+      dockerfile: Dockerfile
+    command: python3 -m book.composites.consumer
+    depends_on:
+      - postgresdb
+      - rabbitmq
+    restart: unless-stopped
+    environment:
+      - DB_USER=postgres
+      - DB_PASSWORD=p_password
+      - DB_HOST=postgresdb
+      - DB_PORT=5432
+      - DB_DATABASE=books_database
+      - RABBIT_USER=user
+      - RABBIT_PASSWORD=password
+      - RABBIT_HOST=rabbitmq
+      - RABBIT_PORT=5672
+      - SECRET_KEY=SECRET
+    volumes:
+      - ./components/book:/app/book
+
+volumes:
+  postgres_data:
+  rabbitmq_data:
