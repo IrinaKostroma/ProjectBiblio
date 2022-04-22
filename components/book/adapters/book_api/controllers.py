@@ -1,5 +1,5 @@
 from classic.components import component
-from classic.http_auth import authenticator_needed, authenticate
+from classic.http_auth import authenticate, authenticator_needed
 
 from book.application import services
 

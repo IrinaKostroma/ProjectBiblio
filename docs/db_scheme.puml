@@ -1,0 +1,67 @@
+@startuml
+
+header Библиотека
+title Схема БД
+
+hide circle
+skinparam linetype ortho
+
+
+entity books {
+  **error**  :  varchar
+  __
+  **title**  :  varchar
+  --
+  **subtitle**  :  varchar
+  __
+  **authors**  :  varchar
+  --
+  **isbn10**  :  int
+  --
+  *  **isbn13**  :  int
+  --
+  **pages**  :  int
+  --
+  **year**  :  int
+  --
+  **rating**  :  int
+  --
+  **desc**  :  varchar
+  __
+  **price**  :  varchar
+  __
+  **image**  :  varchar
+  __
+  **url**  :  varchar
+  --
+  **pdf**  :  varchar
+  --
+  **end booking**  :  datetime
+  --
+  **user_id**  :  varchar
+  --
+  **buy_user_id**  :  datetime
+}
+
+entity users {
+  * **user_id**  :  int
+  __
+  **name**  :  varchar
+  __
+  **login**  :  varchar
+  __
+  **password**  :  varchar
+}
+
+entity history {
+  * **id**  :  int
+  __
+  **isbn13**  :  int
+  __
+  **user_id**  :  int
+  __
+  **end_booking** : datetime
+}
+
+
+@enduml

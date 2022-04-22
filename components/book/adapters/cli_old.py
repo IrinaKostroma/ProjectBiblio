@@ -1,5 +1,4 @@
 import click
-
 from classic.messaging import Message
 
 

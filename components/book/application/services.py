@@ -1,19 +1,26 @@
-import requests
 import threading
+from datetime import datetime, timedelta
+from typing import List, Optional
+
 import pytz
-
-from typing import Optional, List
-from datetime import datetime, timezone, timedelta
-from pydantic import validate_arguments
-
-from classic.components import component
+import requests
+from classic.app import DTO
 from classic.aspects import PointCut
-from classic.app import DTO, validate_with_dto
+from classic.components import component
 from classic.messaging import Message, Publisher
+from pydantic import validate_arguments
 
 from . import interfaces
 from .dataclasses import Book, BookUser
-from .errors import NoUser, NoBook, BookTaken, BookPurchased, EmptySearch, BookAlreadyInDB, BookNoTaken, OutOfTime
+from .errors import (
+    BookAlreadyInDB,
+    BookNoTaken,
+    BookPurchased,
+    BookTaken,
+    EmptySearch,
+    NoBook,
+    OutOfTime,
+)
 
 join_points = PointCut()
 join_point = join_points.join_point

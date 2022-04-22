@@ -1,8 +1,8 @@
 from sqlalchemy.orm import registry
 
 from book.application import dataclasses
-from . import tables
 
+from . import tables
 
 mapper = registry()
 

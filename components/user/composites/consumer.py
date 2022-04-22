@@ -1,12 +1,11 @@
+from classic.messaging_kombu import KombuPublisher
+from classic.sql_storage import TransactionContext
 from kombu import Connection
 from sqlalchemy import create_engine
 
-from classic.sql_storage import TransactionContext
-from classic.messaging_kombu import KombuPublisher
-
-from user.adapters import database, user_api, message_bus
-from user.application import services
+from user.adapters import database, message_bus, user_api
 from user.adapters.database import repositories
+from user.application import services
 
 
 class Settings:

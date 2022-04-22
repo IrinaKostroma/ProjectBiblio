@@ -3,6 +3,7 @@ from typing import Optional
 
 import attr
 
+
 @attr.dataclass
 class Book:
     error: Optional[str] = None

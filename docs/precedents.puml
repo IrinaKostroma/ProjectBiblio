@@ -1,0 +1,41 @@
+@startuml
+
+header Библиотека
+title Диаграмма прецедентов
+
+left to right direction
+
+rectangle "Библиотека" {
+  usecase "Добавить книги" as add_books
+  usecase "Получить список книг" as get_all_book
+  usecase "Получить инфо о книге" as show_info
+  usecase "Забронировать книгу" as booking_book
+  usecase "Закрыть бронь книги" as close_booking
+}
+
+rectangle "History" {
+  usecase "Активная книга" as active_book
+  usecase "Взятые книги" as last_books
+}
+
+rectangle "Registration"{
+    usecase "Вход" as login
+    usecase "регистрация" as auth
+
+}
+
+actor "Пользователь" as user
+user -- get_all_book
+user -- show_info
+user -- active_book
+user -- booking_book
+user -- close_booking
+user -- last_books
+user -- login
+user -- auth
+
+
+actor "CLI" as cli
+cli -- add_books
+
+@enduml

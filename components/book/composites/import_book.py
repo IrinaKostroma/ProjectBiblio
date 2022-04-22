@@ -1,19 +1,18 @@
 import sys
-import requests
 import threading
 
-from kombu import Connection
-from sqlalchemy import create_engine
-
+import requests
 from classic.messaging import Message
 from classic.messaging_kombu import KombuPublisher
 from classic.sql_storage import TransactionContext
+from kombu import Connection
+from sqlalchemy import create_engine
 
-from book.application.services import BookInfo, Book
-from book.application import services
+from book.adapters import book_api, database, message_bus
 from book.adapters.database import repositories
-from book.adapters import database, book_api, message_bus
-from book.application.errors import EmptySearch, BookAlreadyInDB
+from book.application import services
+from book.application.errors import BookAlreadyInDB, EmptySearch
+from book.application.services import Book, BookInfo
 
 
 class Settings:

@@ -1,8 +1,8 @@
+from classic.messaging_kombu import KombuPublisher
 from kombu import Connection
 
-from classic.messaging_kombu import KombuPublisher
-
 from book.application import services
+
 from .scheme import broker_scheme_publ
 
 

@@ -1,11 +1,11 @@
-from typing import Optional, List
+from typing import List, Optional
 
 from classic.components import component
 from classic.sql_storage import BaseRepository
 from sqlalchemy import select
 
 from user.application import interfaces
-from user.application.dataclasses import User, BookUser
+from user.application.dataclasses import BookUser, User
 
 
 @component

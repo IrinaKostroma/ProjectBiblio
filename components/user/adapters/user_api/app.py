@@ -3,8 +3,9 @@ from typing import Tuple, Union
 from classic.http_api import App
 from classic.http_auth import Authenticator
 
+from user.adapters.user_api import auth, controllers
 from user.application import services
-from user.adapters.user_api import controllers, auth
+
 # from . import auth, controllers
 
 

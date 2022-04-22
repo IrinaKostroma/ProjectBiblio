@@ -1,6 +1,4 @@
-from sqlalchemy import (
-    MetaData, Table, Column, Integer, String, BigInteger
-)
+from sqlalchemy import BigInteger, Column, Integer, MetaData, String, Table
 
 naming_convention = {
     'ix': 'ix_%(column_0_label)s',

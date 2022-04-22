@@ -1,7 +1,6 @@
+from classic.sql_storage import TransactionContext
 from kombu import Connection
 from sqlalchemy import create_engine
-
-from classic.sql_storage import TransactionContext
 
 from book.adapters import database, message_bus
 from book.application import services
@@ -33,7 +32,6 @@ class Application:
 class MessageBusConsumer:
     connection = Connection(Settings.message_bus.BROKER_URL)
     consumer = message_bus.create_consumer(connection, Application.books)
-
 
     @staticmethod
     def declare_scheme():

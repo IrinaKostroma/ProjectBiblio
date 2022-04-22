@@ -1,9 +1,8 @@
-from typing import Optional, List
-
-from sqlalchemy import select
+from typing import List, Optional
 
 from classic.components import component
 from classic.sql_storage import BaseRepository
+from sqlalchemy import select
 
 from book.application import interfaces
 from book.application.dataclasses import Book, BookUser
@@ -68,9 +67,10 @@ class BooksRepo(BaseRepository, interfaces.BooksRepo):
                    min_price=None, max_price=None,
                    order_by_price=None, order_by_size=None) -> List[Book]:
         query = self.session.query(Book)
-        for attr, value in filters.items():
-            if value:
-                query = query.filter(getattr(Book, attr) == value)
+        if filters:
+            for attr, value in filters.items():
+                if value:
+                    query = query.filter(getattr(Book, attr) == value)
         if key:
             query = query.where(
                 Book.title.ilike(f'%{key}%')

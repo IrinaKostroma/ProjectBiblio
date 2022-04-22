@@ -3,7 +3,7 @@ from typing import Tuple, Union
 from classic.http_api import App
 from classic.http_auth import Authenticator
 
-from book.adapters.book_api import controllers, auth
+from book.adapters.book_api import auth, controllers
 from book.application import services
 
 

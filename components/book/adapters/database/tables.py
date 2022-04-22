@@ -1,5 +1,11 @@
 from sqlalchemy import (
-    MetaData, Table, Column, Integer, String, Text, BigInteger
+    BigInteger,
+    Column,
+    Integer,
+    MetaData,
+    String,
+    Table,
+    Text,
 )
 
 naming_convention = {
